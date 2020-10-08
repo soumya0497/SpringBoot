@@ -1,0 +1,37 @@
+  
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-boot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-boot
+  template:
+    metadata:
+      labels:
+        app: spring-boot
+    spec:
+      nodeSelector:
+        "beta.kubernetes.io/os": linux
+      containers:
+      - name: spring-boot
+        image: soumya.azurecr.io/spring-boot:spring
+        ports:
+        - containerPort: 8080
+          name: spring-boot
+      imagePullSecrets:
+      - name: spring-boot-app
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring-boot
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 8080
+  selector:
+    app: spring-boot
+
