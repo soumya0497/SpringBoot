@@ -18,7 +18,7 @@ node
             echo "PATH = ${PATH}"
             echo "M2_HOME = ${M2_HOME}"
         '''
-        }/*
+        }*/
     
 	stage ('Initialize Build Env') {
 		 env.DEPLOY_YAML_FILE="spring.yaml"
@@ -44,7 +44,7 @@ node
 	 withKubeConfig([credentialsId: 'testkube']) {
       sh "sed 's/\$COMMIT/${commit_id}/g' ${DEPLOY_YAML_FILE} | kubectl apply -f - -n hca-nonprod "
 	 }
-	 } /*
+	 } */
 	 
 	 stage('Kubernetes Prod Deployment'){
 	 withKubeConfig([credentialsId: 'kube_config']) {
@@ -84,4 +84,4 @@ def notifyBuild(String buildStatus) {
        to: emailRecipients
      )
  }
-/*
+*/
