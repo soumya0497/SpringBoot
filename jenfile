@@ -61,7 +61,7 @@ node
 currentBuild.result = 'FAILURE'		
 }
 }
-/*
+*/
 def notifyBuild(String buildStatus) {
 
 //Variable definition
