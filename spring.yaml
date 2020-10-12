@@ -17,7 +17,7 @@ spec:
         "beta.kubernetes.io/os": linux
       containers:
       - name: spring-boot
-        image: soumya.azurecr.io/spring-boot:spring
+        image: soumya.azurecr.io/spring-boot:$COMMIT
         ports:
         - containerPort: 8080
           name: spring-boot
